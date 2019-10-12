@@ -1,0 +1,17 @@
+[Unit]
+Description=Apache Tomcat 9 Web Application Container
+After=network.target
+
+[Service]
+Type=forking
+Environment=CATALINA_PID=/opt/tomcat9/tomcat.pid
+Environment=CATALINA_HOME=/opt/tomcat9
+Environment=CATALINA_BASE=/opt/tomcat9
+ExecStart=/opt/tomcat9/bin/startup.sh
+ExecStop=/opt/tomcat9/bin/shutdown.sh
+User=tomcat
+Group=tomcat
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
